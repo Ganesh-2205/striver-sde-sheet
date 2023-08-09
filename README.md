@@ -1,5 +1,5 @@
 # striver-sde-sheet
-#day 1 
+#day 1  08/08/2023
 Q1 73. Set Matrix Zeroes
 sol: 
 class Solution {
@@ -47,5 +47,42 @@ public:
                 matrix[i][0]=0;
             }
         }
+    }
+};
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#day2
+Q2 118. Pascal's Triangle
+Given an integer numRows, return the first numRows of Pascal's triangle.
+
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+sol: 
+class Solution {
+public:
+int ncr(int n , int r){
+            long int res =1;
+            //calculation of ncr 
+            for(int i=0;i<r;i++){
+                res = res*(n-i);
+                res = res/(i+1);
+            }
+            return res;
+        }
+
+    vector<vector<int>> generate(int numRows) {
+        
+        
+
+        //calculation for whole pascal triangle
+        vector<vector<int>>ans;
+        for(int row = 1; row <= numRows;row++){
+            vector<int>temp;
+            for(int col =1 ; col<= row;col++){
+                temp.push_back(ncr(row-1 , col-1));
+            }
+            ans.push_back(temp);
+        }
+        return ans;
     }
 };
