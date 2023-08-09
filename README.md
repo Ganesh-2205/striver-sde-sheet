@@ -95,6 +95,7 @@ Problem Statement: Given an array Arr[] of integers, rearrange the numbers of th
 If such an arrangement is not possible, it must rearrange to the lowest possible order (i.e., sorted in ascending order).
 
 sol:
+
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
@@ -123,6 +124,9 @@ public:
         //now reverse in the right half 
         reverse(nums.begin()+ind+1 , nums.end());
         return ;
-
     }
 };
+
+
+
+
