@@ -154,3 +154,35 @@ public:
     }
 };
 
+
+Q5 75. Sort Colors
+Sort an array of 0s, 1s and 2s
+Problem Statement: Given an array consisting of only 0s, 1s, and 2s. Write a program to in-place sort the array without using inbuilt sort functions.
+( Expected: Single pass-O(N) and constant space)
+
+sol:
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        //using DNF algorithm
+        int n = nums.size();
+        int low = 0 , mid = 0; int high = n-1;
+        while(mid<=high){
+            if(nums[mid]==0){
+                swap(nums[low] , nums[mid]);
+                low++ ;
+                mid++;
+            }
+            else if(nums[mid]==1){
+                mid++;
+            }else{
+                swap(nums[mid], nums[high]);
+                high--;
+            }
+            
+        }
+
+        }
+    
+};
+
