@@ -127,6 +127,30 @@ public:
     }
 };
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#day3 10/08/2023
+Q4 53. Maximum Subarray
+Kadane’s Algorithm : Maximum Subarray Sum in an Array
+Problem Statement: Given an integer array arr, find the contiguous subarray (containing at least one number) which
+has the largest sum and returns its sum and prints the subarray.
 
+sol: 
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int count = INT_MIN;
+        int sum = 0;
+        int n= nums.size();
+        for(int i=0;i<n;i++){
+            sum += nums[i];
+            if(sum>count)
+            count =sum;
 
+            if(sum<0)
+            sum =0;
+        }
+        return count;
+        
+    }
+};
 
