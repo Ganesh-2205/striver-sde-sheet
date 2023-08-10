@@ -1,7 +1,7 @@
 # striver-sde-sheet
 #day 1  08/08/2023
 Q1 73. Set Matrix Zeroes
-sol: 
+sol:
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
