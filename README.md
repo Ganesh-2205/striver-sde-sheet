@@ -211,6 +211,7 @@ return maxPro;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #day4
+Q7
 48. Rotate Image
 Problem Statement: Given a matrix, your task is to rotate the matrix 90 degrees clockwise.
 
@@ -230,5 +231,30 @@ public:
         for(int i =0;i<n;i++){
             reverse(matrix[i].begin() , matrix[i].end());
         }
+    }
+};
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#day5
+Q8 56. Merge Intervals
+Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+sol:
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+         int  n = intervals.size();
+        //sorting array intervals
+        sort(intervals.begin() , intervals.end());
+
+        //creating vector variable 'ans' to store ans
+        vector<vector<int>>ans;
+        for(int i = 0 ; i< n ; i++){
+            if(ans.empty() || intervals[i][0]> ans.back()[1]){
+                ans.push_back(intervals[i]);
+            }
+            else{
+                ans.back()[1] = max(ans.back()[1] , intervals[i][1]);
+            }
+        }
+        return ans;
     }
 };
