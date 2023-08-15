@@ -258,3 +258,40 @@ public:
         return ans;
     }
 };
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q9 88. Merge Sorted Array
+Problem statement: Given two sorted arrays arr1[] and arr2[] of sizes n and m in non-decreasing order. Merge them in sorted order. Modify arr1 so that it contains the first N elements and modify arr2 so that it contains the last M elements.
+sol:
+class Solution {
+public:
+void swapIfGreater(vector<int>& nums1, vector<int>& nums2, int ind1, int ind2) {
+    if (nums1[ind1] > nums2[ind2]) {
+        swap(nums1[ind1], nums2[ind2]);
+    }
+}
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        //length of single sorted array
+        int len = m+n;
+        //initial gap 
+        int gap = len/2 + len%2;
+         while(gap>0){
+             int left =0;
+             int right = left + gap;
+             while(right <len){
+                 if(left<m && right >=m){
+                     swapIfGreater(nums1 , nums2 ,left , right - m);
+                 }else if(left>=m){
+                     swapIfGreater(nums2 , nums2 ,left-m , right - m);
+                 }else{
+                     swapIfGreater(nums1 , nums1 ,left , right);
+                 }
+                 left++ ; right++;
+             }
+             //if gap is 1
+             if(gap == 1)
+             break;
+             //otherwise calculate new gap
+             gap = gap/2 + gap%2;
+         }
+    }
+};
