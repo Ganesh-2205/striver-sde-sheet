@@ -259,7 +259,7 @@ public:
     }
 };
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Q9 88. Merge Sorted Array
+#day6 Q9 88. Merge Sorted Array
 Problem statement: Given two sorted arrays arr1[] and arr2[] of sizes n and m in non-decreasing order. Merge them in sorted order. Modify arr1 so that it contains the first N elements and modify arr2 so that it contains the last M elements.
 sol:
 class Solution {
@@ -293,5 +293,29 @@ void swapIfGreater(vector<int>& nums1, vector<int>& nums2, int ind1, int ind2) {
              //otherwise calculate new gap
              gap = gap/2 + gap%2;
          }
+    }
+};
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#day7 287. Find the Duplicate Number
+Problem Statement: Given an array of N + 1 size, where each element is between 1 and N. Assuming there is only one duplicate number, your task is to find the duplicate number.
+sol:
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int slow =nums[0];
+        int fast =nums[0];
+        
+        do{
+            slow =nums[slow];
+            fast = nums[nums[fast]];
+        }while(slow!=fast);
+
+        fast =nums[0];
+        while(slow!=fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
     }
 };
