@@ -319,3 +319,44 @@ public:
         return slow;
     }
 };
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#day8 Missing and repeating numbers
+Problem Statement: You are given a read-only array of N integers with values also in the range [1, N] both inclusive. Each integer appears exactly once except A which appears twice and B which is missing. The task is to find the repeating and missing numbers A and B where A repeats twice and B is missing.
+sol:
+#include <bits/stdc++.h>
+
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+	// Write your code here 
+	//sum of first n numbers
+	long long Sn = (n*(n+1))/2;
+	//sum of square of first n numbers
+	long long S2n = (n*(n+1)*(2*n+1))/6; 
+    
+	long long S = 0;
+	long long S2 = 0;
+	for(int i=0;i<n;i++){
+		// sum of all niumbers in a given array
+		S += arr[i];
+		// sum of square of all numbers in a given array
+		S2 += (long long)arr[i] * (long long)arr[i];		
+	}
+	
+	//here X is repeating no. and Y is a missing no.
+	
+	// S-Sn = X-Y
+	long long val1 = S-Sn ;
+	
+	// S2-S2n = X^2 - Y^2
+	long long val2 = S2 - S2n;
+	
+	//find value X+Y = (S2 -S2n)/(X-Y) 
+	val2 = val2 / val1;
+	
+	// Here, X-Y = val1 and X+Y = val2:
+    long long x = (val1 + val2) / 2;
+    long long y = x - val1;
+	
+	return {(int)y,(int)x};
+	
+}
