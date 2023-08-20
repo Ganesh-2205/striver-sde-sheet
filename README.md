@@ -297,7 +297,7 @@ void swapIfGreater(vector<int>& nums1, vector<int>& nums2, int ind1, int ind2) {
 };
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#day7 287. Find the Duplicate Number
+#day7 Q10 287. Find the Duplicate Number
 Problem Statement: Given an array of N + 1 size, where each element is between 1 and N. Assuming there is only one duplicate number, your task is to find the duplicate number.
 sol:
 class Solution {
@@ -320,7 +320,7 @@ public:
     }
 };
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#day8 Missing and repeating numbers
+#day8 Q11 Missing and repeating numbers
 Problem Statement: You are given a read-only array of N integers with values also in the range [1, N] both inclusive. Each integer appears exactly once except A which appears twice and B which is missing. The task is to find the repeating and missing numbers A and B where A repeats twice and B is missing.
 sol:
 #include <bits/stdc++.h>
@@ -359,4 +359,25 @@ pair<int,int> missingAndRepeating(vector<int> &arr, int n)
 	
 	return {(int)y,(int)x};
 	
+}
+
+
+Q12 Count Inversions
+Problem Statement: Given an array of N integers, count the inversion of the array (using merge-sort).
+
+What is an inversion of an array? Definition: for all i & j < size of array, if i < j then you have to find pair (A[i],A[j]) such that A[j] < A[i].
+sol:
+#include <bits/stdc++.h> 
+long long getInversions(long long *arr, int n){
+    // Write your code here.
+    int count = 0;
+    for(int i=0;i<n;i++){
+        
+        for(int j=i+1 ;j<n;j++){
+            if(arr[j]<arr[i]){
+                count++;
+            }
+        }
+    }
+    return count;
 }
