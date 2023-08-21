@@ -415,7 +415,7 @@ public:
     }
 };
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#day9 50. Pow(x, n)
+#day9 Q14 50. Pow(x, n)
 Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
 sol:
 class Solution {
@@ -438,5 +438,34 @@ public:
          if(n<0)
             ans =(double)(1.0)/(double)(ans);
         return ans;
+    }
+};
+
+
+Q15 169. Majority Element
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+sol:
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int ansIndex = 0;
+        int n= nums.size();
+        int count =1;
+
+        for(int i=1;i<n;i++){
+            if(nums[i] == nums[ansIndex]){
+                count++;
+            }else{
+                count--;
+            }
+
+            if(count == 0){
+                ansIndex = i;
+                count =1;
+            }
+        }
+        return nums[ansIndex];
     }
 };
